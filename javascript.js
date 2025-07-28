@@ -2,11 +2,12 @@
 
 function getComputerChoice() {
     let choiceComputer;
+    const randomValue = Math.random();
 
-    if (Math.random() <= 0.33) {
+    if (randomValue <= 0.33) {
         choiceComputer = "Rock";
         console.log("Computer chose: Rock");
-    } else if (Math.random() <= 0.66) {
+    } else if (randomValue <= 0.66) {
         choiceComputer = "Paper";
         console.log("Computer chose: Paper");
     } else {
@@ -28,14 +29,19 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(choiceComputer, choiceHuman) {
+function playRound(choiceHuman, choiceComputer) {
 
     if (choiceHuman === choiceComputer) {
         console.log("Tie. Play again!");
-    }   
+    } else if (choiceHuman === "Rock" && choiceComputer === "Paper") {
+        console.log("You lose! Paper beats Rock.");
+        computerScore++;
 }
-
+}
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection)
+
+console.log("Computer final score: " + computerScore);
+console.log("Human final score: " + humanScore);
