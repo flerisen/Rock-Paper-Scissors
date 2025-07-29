@@ -1,3 +1,8 @@
+let roundCount = parseInt(prompt("Please enter the number of rounds you want to play:"));
+
+let humanScore = 0;
+let computerScore = 0;
+
 // Create a function for Computer player by leveraging the Math.random function
 
 function getComputerChoice() {
@@ -26,11 +31,9 @@ function getHumanChoice() {
     return choiceHuman;
 }
 
-let humanScore = 0;
-let computerScore = 0;
+// Create a function with logic to play one round
 
 function playRound(choiceHuman, choiceComputer) {
-
     if (choiceHuman === choiceComputer) {
         console.log("Tie. Play again!");
     } else if (choiceHuman === "Rock" && choiceComputer === "Scissors") {
@@ -48,10 +51,21 @@ function playRound(choiceHuman, choiceComputer) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+// Create a function playGame, which is used to to play as many rounds as the user chooses
 
-playRound(humanSelection, computerSelection)
+function playGame() {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection)
+}
+
+// Create a loop to to call the function as many times as the users chosen value is
+
+for (let i = 1; i <= roundCount; i++) {
+    playGame(i)
+}
+
+// prints the final scores to the browser
 
 console.log("Computer final score: " + computerScore);
 console.log("Human final score: " + humanScore);
